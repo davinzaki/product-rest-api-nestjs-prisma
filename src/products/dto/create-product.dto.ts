@@ -11,5 +11,5 @@ export class CreateProductDto {
   stock: number;
 
   @ApiProperty()
-  category: number;
+  categoryId: number;
 }

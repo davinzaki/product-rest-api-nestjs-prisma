@@ -7,11 +7,15 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class ProductsService {
   constructor(private prisma: PrismaService) {}
   create(createProductDto: CreateProductDto) {
-    return 'This action adds a new product';
+    return this.prisma.product.create({ data: createProductDto });
   }
 
   findAll() {
-    return this.prisma.product.findMany();
+    return this.prisma.product.findMany({
+      orderBy: {
+        id: 'desc',
+      },
+    });
   }
 
   findOne(id: number) {
@@ -19,10 +23,13 @@ export class ProductsService {
   }
 
   update(id: number, updateProductDto: UpdateProductDto) {
-    return `This action updates a #${id} product`;
+    return this.prisma.product.update({
+      where: { id },
+      data: updateProductDto,
+    });
   }
 
   remove(id: number) {
-    return `This action removes a #${id} product`;
+    return this.prisma.product.delete({ where: { id } });
   }
 }

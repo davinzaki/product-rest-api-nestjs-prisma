@@ -1,50 +1,3 @@
-// import { PrismaClient } from '@prisma/client';
-// const prisma = new PrismaClient();
-// async function main() {
-//   const books = await prisma.category.upsert({
-//     where: { id: 1 },
-//     update: {},
-//     create: {
-//       name: 'Books',
-//       products: {
-//         create: {
-//           name: clean('Lord of the mysteries'),
-//           price: 100000,
-//           stock: 10,
-//         },
-//       },
-//     },
-//   });
-//   const movies = await prisma.category.upsert({
-//     where: { id: 2 },
-//     update: {},
-//     create: {
-//       name: 'Movies',
-//       products: {
-//         create: {
-//           name: clean('Lord of the ring'),
-//           price: 120000,
-//           stock: 5,
-//         },
-//       },
-//     },
-//   });
-//   console.log(books, movies);
-// }
-
-// function clean(input: string) {
-//   return input.replace(/\0/g, ''); // hapus karakter null byte
-// }
-// main()
-//   .then(async () => {
-//     await prisma.$disconnect();
-//   })
-//   .catch(async (e) => {
-//     console.error(e);
-//     await prisma.$disconnect();
-//     process.exit(1);
-//   });
-
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 async function main() {
@@ -100,7 +53,7 @@ async function main() {
     },
   });
   const movies = await prisma.category.upsert({
-    where: { name: 'Books' },
+    where: { name: 'Movies' },
     update: {},
     create: {
       name: 'Movies',
